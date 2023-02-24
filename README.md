@@ -38,3 +38,7 @@ PHP Version:8.1.13
 # Update -Update with pivot table data
 
 # Delete -Delete with Pivot table data
+
+# Postman collection
+
+https://documenter.getpostman.com/view/25052647/2s93CPpBpE
