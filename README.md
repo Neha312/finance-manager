@@ -1,11 +1,12 @@
-## Finance Project
+# Finance Manament Project
 
-## Tables:finance_years,comp_off_requests,expence_requests, expence_request_users
+# Install Project
 
-## Make seeder of finance_year
+composer create-project laravel/laravel finance-manager
 
-## Run Migration
+# PostMan Collection Link
 
+<<<<<<< HEAD
 Laravel version:10
 PHP Version:8.1.13
 
@@ -41,4 +42,6 @@ PHP Version:8.1.13
 
 # Postman collection
 
+=======
+>>>>>>> develop
 https://documenter.getpostman.com/view/25052647/2s93CPpBpE
