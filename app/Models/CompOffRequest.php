@@ -9,9 +9,6 @@ use App\Models\BaseModel;
 class CompOffRequest extends BaseModel
 {
     use UuidTrait;
-    protected $keyType      = 'string';
-    protected $primaryKey   = 'id';
-    public $incrementing    = false;
     /**
      * The attributes that are mass assignable.
      *

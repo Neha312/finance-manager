@@ -9,7 +9,7 @@ use App\Models\ExpenseRequest;
 class ExpenseRequestController extends Controller
 {
     /**
-     * API of List Expence
+     * API of List Expense
      *
      * @param  \Illuminate\Http\Request  $request
      * @return $expence
@@ -49,18 +49,18 @@ class ExpenseRequestController extends Controller
         }
 
         /* Get records */
-        $expence = $query->get();
+        $expense = $query->get();
 
         $data = [
             'count' => $count,
-            'data'  => $expence
+            'data'  => $expense
         ];
 
-        return ok('Expence list', $data);
+        return ok('Expense list', $data);
     }
 
     /**
-     * API of Create Expence
+     * API of Create Expense
      *
      * @param  \Illuminate\Http\Request  $request
      * @return $expence
@@ -76,12 +76,12 @@ class ExpenseRequestController extends Controller
             'is_active'             => 'nullable|boolean'
         ]);
 
-        $expence = ExpenseRequest::create($request->only('financial_year_id', 'date', 'amount', 'attachment', 'description'));
-        return ok('Expence created successfully', $expence);
+        $expense = ExpenseRequest::create($request->only('financial_year_id', 'date', 'amount', 'attachment', 'description'));
+        return ok('Expense created successfully', $expense);
     }
 
     /**
-     * API of Update Expence
+     * API of Update Expense
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  $id
@@ -96,9 +96,9 @@ class ExpenseRequestController extends Controller
             'description'           => 'nullable|string|max:551',
             'is_active'             => 'nullable|boolean'
         ]);
-        $expence = ExpenseRequest::findOrFail($id);
-        $expence->update($request->only('financial_year_id', 'date', 'amount', 'attachment', 'description'));
-        return ok('Expence updated successfully', $expence);
+        $expense = ExpenseRequest::findOrFail($id);
+        $expense->update($request->only('financial_year_id', 'date', 'amount', 'attachment', 'description'));
+        return ok('Expense updated successfully', $expense);
     }
 
     /**
@@ -109,9 +109,9 @@ class ExpenseRequestController extends Controller
      */
     public function get($id)
     {
-        $expence = ExpenseRequest::findOrFail($id);
+        $expense = ExpenseRequest::findOrFail($id);
 
-        return ok('Expence retrieved successfully', $expence);
+        return ok('Expense get successfully', $expense);
     }
 
     /**
@@ -122,10 +122,10 @@ class ExpenseRequestController extends Controller
      */
     public function delete($id)
     {
-        $expence = ExpenseRequest::findOrFail($id);
-        $expence->delete();
+        $expense = ExpenseRequest::findOrFail($id);
+        $expense->delete();
 
-        return ok('Expence deleted successfully');
+        return ok('Expense deleted successfully');
     }
 
     /**
@@ -141,9 +141,9 @@ class ExpenseRequestController extends Controller
             'approval_by'       => 'required|string|exists:users,id',
         ]);
 
-        $compoff = ExpenseRequest::findOrFail($id);
-        $compoff->update($request->only('is_approved', 'approval_status', 'approval_by'));
+        $expense = ExpenseRequest::findOrFail($id);
+        $expense->update($request->only('is_approved', 'approval_status', 'approval_by'));
 
-        return ok('Expence updated Successfully');
+        return ok('Expense updated Successfully');
     }
 }
