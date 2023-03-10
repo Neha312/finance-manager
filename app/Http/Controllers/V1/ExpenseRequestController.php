@@ -75,8 +75,11 @@ class ExpenseRequestController extends Controller
             'description'           => 'nullable|string|max:551',
             'is_active'             => 'nullable|boolean'
         ]);
-
-        $expense = ExpenseRequest::create($request->only('financial_year_id', 'date', 'amount', 'attachment', 'description'));
+        $imageName = str_replace(".", "", (string)microtime(true)) . '.' . $request->attachment->getClientOriginalExtension();
+        $request->attachment->storeAs("public/attachment", $imageName);
+        $expense = ExpenseRequest::create($request->only('financial_year_id', 'date', 'amount', 'description') + [
+            'attachment'   => $imageName
+        ]);
         return ok('Expense created successfully', $expense);
     }
 
@@ -97,7 +100,11 @@ class ExpenseRequestController extends Controller
             'is_active'             => 'nullable|boolean'
         ]);
         $expense = ExpenseRequest::findOrFail($id);
-        $expense->update($request->only('financial_year_id', 'date', 'amount', 'attachment', 'description'));
+        $imageName = str_replace(".", "", (string)microtime(true)) . '.' . $request->attachment->getClientOriginalExtension();
+        $request->attachment->storeAs("public/attachment", $imageName);
+        $expense->update($request->only('financial_year_id', 'date', 'amount', 'description') + [
+            'attachment'   => $imageName
+        ]);
         return ok('Expense updated successfully', $expense);
     }
 
