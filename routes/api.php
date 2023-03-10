@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\V1\AuthController;
 use App\Http\Controllers\V1\CompOffRequestController;
 use App\Http\Controllers\V1\ExpenseRequestController;
+use App\Http\Controllers\V1\MasterLeaveStatusController;
 use App\Http\Controllers\V1\EmployeeLeaveAttachmentController;
 use App\Http\Controllers\V1\EmployeeLeaveApplicationController;
 
@@ -63,6 +64,13 @@ Route::prefix('V1')->group(function () {
             Route::post('update/{id}', 'update');
             Route::post('delete/{id}', 'delete');
             Route::post('approval/{id}', 'approval');
+        });
+        Route::controller(MasterLeaveStatusController::class)->prefix('status')->group(function () {
+            Route::post('list',  'list');
+            Route::post('create', 'create');
+            Route::get('get/{id}',  'get');
+            Route::post('update/{id}', 'update');
+            Route::post('delete/{id}', 'delete');
         });
     });
 });

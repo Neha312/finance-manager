@@ -51,6 +51,10 @@ class EmployeeLeaveApplication extends BaseModel
                 return $this->leave_status;
         }
     }
+    /**
+     *Employee Leave Application Belongs to  users
+     *
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
