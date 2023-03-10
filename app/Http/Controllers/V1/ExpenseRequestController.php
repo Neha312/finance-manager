@@ -43,9 +43,9 @@ class ExpenseRequestController extends Controller
         /* Pagination */
         $count = $query->count();
         if ($request->page && $request->perPage) {
-            $page = $request->page;
+            $page    = $request->page;
             $perPage = $request->perPage;
-            $query = $query->skip($perPage * ($page - 1))->take($perPage);
+            $query   = $query->skip($perPage * ($page - 1))->take($perPage);
         }
 
         /* Get records */
@@ -99,8 +99,8 @@ class ExpenseRequestController extends Controller
             'description'           => 'nullable|string|max:551',
             'is_active'             => 'nullable|boolean'
         ]);
-        $expense = ExpenseRequest::findOrFail($id);
-        $fileName  = str_replace(".", "", (string)microtime(true)) . '.' . $request->attachment->getClientOriginalExtension();
+        $expense  = ExpenseRequest::findOrFail($id);
+        $fileName = str_replace(".", "", (string)microtime(true)) . '.' . $request->attachment->getClientOriginalExtension();
         $request->attachment->storeAs("public/attachment", $fileName);
         $expense->update($request->only('financial_year_id', 'date', 'amount', 'description') + [
             'attachment'   => $fileName
