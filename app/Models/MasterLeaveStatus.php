@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Models\BaseModel;
 
-class MasterLeaveStatus extends Model
+class MasterLeaveStatus extends BaseModel
 {
     protected $table        = 'mst_leave_status';
-    public $timestamps      = false;
     protected $primaryKey   = 'code';
     protected $keyType      = 'string';
     public $incrementing    = false;
@@ -18,6 +17,12 @@ class MasterLeaveStatus extends Model
      */
     protected $fillable     = [
         'code',
-        'name'
+        'name',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

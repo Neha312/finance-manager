@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('mst_leave_status', function (Blueprint $table) {
             $table->string('code', 5)->primary();
             $table->string('name', 64);
+            $table->timestamps();
+            $table->char('created_by', 36)->nullable();
+            $table->char('updated_by', 36)->nullable();
+            $table->char('deleted_by', 36)->nullable();
         });
     }
 
