@@ -28,12 +28,4 @@ class ExpenseRequest extends BaseModel
         'updated_by',
         'deleted_by'
     ];
-    /**
-     *Expence Belongs to many users
-     *
-     */
-    public function users()
-    {
-        return $this->belongsToMany(User::class);
-    }
 }
