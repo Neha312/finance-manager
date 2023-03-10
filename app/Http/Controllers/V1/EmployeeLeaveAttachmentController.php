@@ -83,7 +83,7 @@ class EmployeeLeaveAttachmentController extends Controller
         $this->validate($request, [
             'leave_appl_id'    => 'required|string|exists:emp_leave_appl,id',
             'name'             => 'nullable|string|max:128',
-            'url'              => 'nullable|url|max:255',
+            'url'              => 'nullable|string|max:255',
         ]);
         $attachment = EmployeeLeaveAttachment::findOrFail($id);
         $attachment->update($request->only('leave_appl_id', 'name', 'url'));
